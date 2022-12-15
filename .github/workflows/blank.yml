@@ -60,7 +60,7 @@ jobs:
     needs: docker-build-publish
     if: github.ref == 'refs/heads/staging'
     environment:
-      name: "development"
+      name: "staging"
     
     steps:
       - name: Lowercase the repo name
@@ -75,7 +75,7 @@ jobs:
     needs: docker-build-publish
     if: github.ref == 'refs/heads/prod'
     environment:
-      name: "development"
+      name: "prod"
     
     steps:
       - name: Lowercase the repo name
