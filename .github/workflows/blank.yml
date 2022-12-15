@@ -4,7 +4,6 @@ on:
     branches:
       - dev
       - staging
-      - prod
   pull_request:
     branches:
       - main
@@ -60,7 +59,7 @@ jobs:
     needs: docker-build-publish
     if: github.ref == 'refs/heads/staging'
     environment:
-      name: "development"
+      name: "staging"
     
     steps:
       - name: Lowercase the repo name
@@ -76,7 +75,7 @@ jobs:
     #if: github.ref == 'refs/heads/main'
     if: github.event_name = 'pull_request'
     environment:
-      name: "development"
+      name: "prod"
     
     steps:
       - name: Lowercase the repo name
