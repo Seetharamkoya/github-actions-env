@@ -18,7 +18,7 @@ jobs:
         include:
           - environment: dev
           - environment: staging
-          - environment: prod
+          - environment: main
               
     runs-on: ubuntu-latest
     permissions:
