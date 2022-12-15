@@ -11,14 +11,12 @@ on:
 
 jobs:
   docker-build-publish:
-    name: ${{ matrix.environment }}
-    strategy:
-      max-parallel: 1
-      matrix:
-        include:
-          - environment: dev
-          - environment: staging
-          - environment: main
+    #name: ${{ matrix.environment }}
+    #strategy:
+      #max-parallel: 1
+      #matrix:
+        #include:
+          #- environment: dev
               
     runs-on: ubuntu-latest
     permissions:
@@ -34,6 +32,20 @@ jobs:
       - name: Set environment
         run: |
               echo "Setting state for ${{ matrix.environment }}"
+              
+              if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
+              echo "Setting state for prod"
+              #mv .env.azure.prod .env
+               elif [[ $GITHUB_REF == 'refs/heads/staging' ]]; then
+              echo "Setting state for staging"
+              #mv .env.azure.staging .env
+              elif [[ $GITHUB_REF == 'refs/heads/dev' ]]; then
+              echo "Setting state for dev"
+              #mv .env.azure.dev .env
+              else
+              echo $GITHUB_REF
+              exit -1
+              fi
 
       - name: checking Build
         run: |
