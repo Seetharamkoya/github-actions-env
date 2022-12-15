@@ -68,7 +68,7 @@ jobs:
 
       - name: checking deploy
         run: |
-          echo "Hello-staging"
+          echo "Hello-staging-deploy"
 
   deploy-prod:
     runs-on: ubuntu-latest
