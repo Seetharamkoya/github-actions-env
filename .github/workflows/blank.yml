@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-    types: [opened, synchronize, closed]
+    types: [opened, closed]
 
 jobs:
   docker-build-publish:
@@ -75,7 +75,7 @@ jobs:
     needs: docker-build-publish
     #if: github.ref == 'refs/heads/main'
     #if: github.event_name == 'pull_request'
-    if: (!(github.event.action == 'closed' && github.event.pull_request.merged != true))
+    if: ((github.event.action == 'closed' && github.event.pull_request.merged == true))
     environment:
       name: "prod"
     
