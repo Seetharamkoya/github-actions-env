@@ -17,7 +17,7 @@ jobs:
         include:
           - environment: dev
           - environment: staging
-          - environment: prod
+          - environment: main
               
     runs-on: ubuntu-latest
     permissions:
@@ -67,7 +67,7 @@ jobs:
 
       - name: checking deploy
         run: |
-          echo "Hello-staging"
+          echo "Hello-staging-deploy"
 
   deploy-prod:
     runs-on: ubuntu-latest
