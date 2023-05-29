@@ -1,2 +1,2 @@
 # github-actions-env
-checking environments
+checking environment variables through pull request(PR)
